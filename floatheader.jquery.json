@@ -1,0 +1,36 @@
+{
+"name": "floatheader",
+"title": "jQuery Float Header",
+"description": "FloatHeader is a very light-weight jQuery plugin used to fix the table header. The logic is very simple so that you can tweak as per you requirement. Only a few 
+
+lines of code, thats it; what else you need.",
+"keywords": [
+"fixedtableheader",
+"floatheader"
+],
+"version": "1.0.0",
+"author": {
+"name": "Ram Yadav",
+"url": "https://github.com/paramby/floatheader"
+},
+"maintainers": [
+{
+"name": "Ram Yadav",
+"email": "ram.webx@gmail.com",
+"url": "http://criticaldevelopers.com"
+}
+],
+"licenses": [
+{
+"type": "MIT",
+"url": "https://github.com/jquery/jquery-color/blob/2.1.2/MIT-LICENSE.txt"
+}
+],
+"bugs": "https://github.com/paramby/floatheader/issues",
+"homepage": "https://github.com/paramby/floatheader",
+"docs": "https://github.com/paramby/floatheader",
+"download": "https://github.com/paramby/floatheader",
+"dependencies": {
+"jquery": ">=1.5"
+}
+}
