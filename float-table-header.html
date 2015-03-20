@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Fixed Table Header | Critical Developers</title>
+  
+<style type='text/css'>
+html, body{
+  margin:0;
+  padding:0;
+  height:100%;
+  color: #000000;
+}
+
+.maincontainer
+{
+   width:100%; 
+   overflow-x: hidden; 
+   overflow-y: auto; 
+   margin: 0 auto; 
+   position:relative; 
+   height:200px; 
+}
+
+.headerclone
+{
+    width:100%;
+   z-index: 9999; 
+   display:none; 
+   position:absolute; 
+}
+
+.tblList
+{
+    width: 100%; 
+    border-collapse: collapse; 
+    border-style: None;
+}
+
+.tblList thead th {
+    background-color: #f7f7f7 !important;
+    border-color: #cbc8c8 #cbc8c8 #e0e0e0 #cbc8c8;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 15px;
+    font-weight: bold;
+    height: 25px;
+    padding: 4px 10px 3px;
+    text-align: left;
+    vertical-align: top;
+}
+.tblList tbody td {
+    border-color: #cbc8c8 #cbc8c8 #e0e0e0 #cbc8c8;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 4px 10px 6px;
+    vertical-align: top;
+}
+.tblList tr.alt td {
+    background-color: #FFFFFF !important;
+}
+.tblList tbody tr:nth-child(2n+1) {
+    background-color: #F7F7F7 !important;
+}
+.tblList tbody tr:nth-child(2n) {
+    background-color: #FFFFFF !important;
+}
+
+</style>
+
+</head>
+<body>
+    <table class="tblList">
+      <thead>
+        <tr>
+          <th>
+            Header#1
+          </th>
+          <th>
+            Header#2
+          </th>
+          <th>
+            Header#3
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Column-1</td>
+          <td>Column-2</td>
+          <td>Column-3</td>
+        </tr>
+        <tr>
+          <td>Column-4</td>
+          <td>Column-5</td>
+          <td>Column-6</td>
+        </tr>
+        <tr>
+          <td>Column-7</td>
+          <td>Column-8</td>
+          <td>Column-9</td>
+        </tr>
+        <tr>
+          <td>Column-10</td>
+          <td>Column-11</td>
+          <td>Column-12</td>
+        </tr>
+        <tr>
+          <td>Column-13</td>
+          <td>Column-14</td>
+          <td>Column-15</td>
+        </tr>
+        <tr>
+          <td>Column-16</td>
+          <td>Column-17</td>
+          <td>Column-18</td>
+        </tr>
+        <tr>
+          <td>Column-19</td>
+          <td>Column-20</td>
+          <td>Column-21</td>
+        </tr>
+        <tr>
+          <td>Column-22</td>
+          <td>Column-23</td>
+          <td>Column-24</td>
+        </tr>
+        <tr>
+          <td>Column-25</td>
+          <td>Column-26</td>
+          <td>Column-27</td>
+        </tr>
+      </tbody>
+    </table>
+
+        <!-- SCRIPTS -->
+      <script src="js/jquery.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("table.tblList").floatheader();
+    });
+
+    // FloatHeader v1.0 - jQuery floatheader plugin
+    // (c) 2015 Ram Yadav - criticaldevelopers.com
+    // License: http://www.opensource.org/licenses/mit-license.php
+
+    (function ($) {
+        $.fn.floatheader = function (options) {
+            // Default Settings
+            var settings = $.extend({
+
+            }, options);
+            // Apply Settings Variables
+            //
+            function fixheader(elem) {
+               // Add supportive wrappers to scrollable table
+               $(elem).wrap('<div class="maincontainer">');
+               $("div.maincontainer").prepend('<div class="headerclone"></div>');
+               $(elem).clone().appendTo(".headerclone")
+               $(".headerclone").find("table > tbody").remove();
+
+               // To get same width of header while cloning
+               $(elem).find("thead th").each(function(i){
+               //alert($(this).width());
+               $(".headerclone").find("table thead tr th").eq(i).css({"width":$(this).width()+"px"});            
+               });
+
+               // onscroll show/hide the cloned header
+               $("div.maincontainer").bind("scroll", function () {
+                   var offset = $(this).scrollTop();
+                   //console.log(offset);
+                   var headerheight = $(elem).find("thead th").eq(0).outerHeight();
+                   if (offset >= headerheight) {
+                       $(".headerclone").show();
+                       $(".headerclone").css({ "top": offset + "px" });
+                   }
+                   else {
+                       $(".headerclone").hide();
+                       $(".headerclone").css({ "top": offset + "px" });
+                   }
+               });
+            }
+            //
+            return fixheader(this);
+        };
+    } (jQuery));
+
+    </script>
+ 
+</body>
+
+
+</html>
