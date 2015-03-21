@@ -7,7 +7,7 @@ Lets learn how to use it:-
 
 Very first we need a table markups as shown below:-
 
-<table class="tblList">
+<table class="tblList" width="100%" cellpadding="2" cellspacing="2">
 <thead>
 <tr>
 <th>
