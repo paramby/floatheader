@@ -1,0 +1,228 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Floatheader</title>
+  <meta name="description" content="FloatHeader is a very light-weight jQuery plugin used to fix the table header. The logic is very simple so that you can tweak as per you requirement. Only a few lines of code, thats it; what else you need.">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Floatheader</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">FloatHeader is a very light-weight jQuery plugin used to fix the table header. The logic is very simple so that you can tweak as per you requirement. Only a few lines of code, thats it; what else you need.</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/paramby/floatheader/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/paramby/floatheader/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/paramby/floatheader" class="code">View Floatheader on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h1>
+<a id="floatheader" class="anchor" href="#floatheader" aria-hidden="true"><span class="octicon octicon-link"></span></a>floatheader</h1>
+
+<p>As there are lots of plugins to fix/float the table header and they are also included with bunch of options and features. But sometime we do not need all those features, so here in I have written a simple and a light weight plugin which floats the table header. And but obvious we all know why we need floating headers, because our user hate to scroll up and down when there are numbers numbers of records on a page.</p>
+
+<p>FloatHeader is a very light-weight jQuery plugin used to fix the table header. The logic is very simple so that you can tweak as per you requirement. Only a few lines of code, thats it; what else you need.</p>
+
+<p>Lets learn how to use it:-</p>
+
+<p>Very first we need a table markups as shown below:-</p>
+
+<p></p><table>
+      <thead>
+        <tr>
+          <th>Header#1</th>
+          <th>Header#2</th>
+          <th>Header#3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Column-1</td>
+          <td>Column-2</td>
+          <td>Column-3</td>
+        </tr>
+        <tr>
+          <td>Column-4</td>
+          <td>Column-5</td>
+          <td>Column-6</td>
+        </tr>
+        <tr>
+        </tr>
+<tr>
+          <td>Column-22</td>
+          <td>Column-23</td>
+          <td>Column-24</td>
+        </tr>
+        <tr>
+          <td>Column-25</td>
+          <td>Column-26</td>
+          <td>Column-27</td>
+        </tr>
+      </tbody>
+    </table>
+
+<p>Add styles for table as in here:-</p>
+
+<p>/* primary styles */</p>
+
+<p>html, body{
+  margin:0;
+  padding:0;
+  height:100%;
+  color: #000000;
+}</p>
+
+<p>/* required styles for plugin */
+.maincontainer
+{
+   width:100%;
+   overflow-x: hidden;
+   overflow-y: auto;
+   margin: 0 auto;
+   position:relative;
+   height:200px;
+}</p>
+
+<p>.headerclone
+{
+    width:100%;
+   z-index: 9999;
+   display:none;
+   position:absolute;
+}
+/* yours table styles */
+.tblList
+{
+    width: 100%;
+    border-collapse: collapse;
+    border-style: None;
+}</p>
+
+<p>.tblList thead th {
+    background-color: #f7f7f7 !important;
+    border-color: #cbc8c8 #cbc8c8 #e0e0e0 #cbc8c8;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 15px;
+    font-weight: bold;
+    height: 25px;
+    padding: 4px 10px 3px;
+    text-align: left;
+    vertical-align: top;
+}
+.tblList tbody td {
+    border-color: #cbc8c8 #cbc8c8 #e0e0e0 #cbc8c8;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 4px 10px 6px;
+    vertical-align: top;
+}
+.tblList tr.alt td {
+    background-color: #FFFFFF !important;
+}
+.tblList tbody tr:nth-child(2n+1) {
+    background-color: #F7F7F7 !important;
+}
+.tblList tbody tr:nth-child(2n) {
+    background-color: #FFFFFF !important;
+}</p>
+
+<p>Add a reference of jQuery.js either using local path or using cdn.</p>
+
+<p>Then Add floatheader.js plugin which is written as below:-</p>
+
+<pre><code>// FloatHeader v1.0 - jQuery floatheader plugin
+// (c) 2015 Ram Yadav - criticaldevelopers.com
+// License: http://www.opensource.org/licenses/mit-license.php
+
+(function ($) {
+    $.fn.floatheader = function (options) {
+        // Default Settings
+        var settings = $.extend({
+
+        }, options);
+        // Apply Settings Variables
+        //
+        function fixheader(elem) {
+           // Add supportive wrappers to scrollable table
+           $(elem).wrap('&lt;div class="maincontainer"&gt;');
+           $("div.maincontainer").prepend('&lt;div class="headerclone"&gt;&lt;/div&gt;');
+           $(elem).clone().appendTo(".headerclone")
+           $(".headerclone").find("table &gt; tbody").remove();
+
+           // To get same width of header while cloning
+           $(elem).find("thead th").each(function(i){
+           $(".headerclone").find("table thead tr th").eq(i).css({"width":$(this).width()+"px"});           
+           });
+
+           // onscroll show/hide the cloned header
+           $("div.maincontainer").bind("scroll", function () {
+               var offset = $(this).scrollTop();
+               var headerheight = $(elem).find("thead th").eq(0).outerHeight();
+               if (offset &gt;= headerheight) {
+                   $(".headerclone").show();
+                   $(".headerclone").css({ "top": offset + "px" });
+               }
+               else {
+                   $(".headerclone").hide();
+                   $(".headerclone").css({ "top": offset + "px" });
+               }
+           });
+        }
+        //
+        return fixheader(this);
+    };
+} (jQuery));
+</code></pre>
+
+<p>And Now its time to call the floatheader as here below:-</p>
+
+<pre><code>$(document).ready(function () {
+    $("table.tblList").floatheader();
+});
+</code></pre>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/paramby" class="avatar"><img src="https://avatars1.githubusercontent.com/u/8625297?v=3&amp;s=60" width="48" height="48"></a> <a href="https://github.com/paramby">paramby</a> maintains <a href="https://github.com/paramby/floatheader">Floatheader</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/paramby/floatheader/tarball/master" class="tar">tar</a><a href="https://github.com/paramby/floatheader/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
