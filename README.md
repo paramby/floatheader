@@ -7,44 +7,75 @@ Lets learn how to use it:-
 
 Very first we need a table markups as shown below:-
 
- <table class="tblList">
-      <thead>
-        <tr>
-          <th>Header#1</th>
-          <th>Header#2</th>
-          <th>Header#3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Column-1</td>
-          <td>Column-2</td>
-          <td>Column-3</td>
-        </tr>
-        <tr>
-          <td>Column-4</td>
-          <td>Column-5</td>
-          <td>Column-6</td>
-        </tr>
-        <tr>
-        <tr>
-          <td>Column-22</td>
-          <td>Column-23</td>
-          <td>Column-24</td>
-        </tr>
-        <tr>
-          <td>Column-25</td>
-          <td>Column-26</td>
-          <td>Column-27</td>
-        </tr>
-      </tbody>
-    </table>
+<table class="tblList">
+<thead>
+<tr>
+<th>
+Header#1
+</th>
+<th>
+Header#2
+</th>
+<th>
+Header#3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Column-1</td>
+<td>Column-2</td>
+<td>Column-3</td>
+</tr>
+<tr>
+<td>Column-4</td>
+<td>Column-5</td>
+<td>Column-6</td>
+</tr>
+<tr>
+<td>Column-7</td>
+<td>Column-8</td>
+<td>Column-9</td>
+</tr>
+<tr>
+<td>Column-10</td>
+<td>Column-11</td>
+<td>Column-12</td>
+</tr>
+<tr>
+<td>Column-13</td>
+<td>Column-14</td>
+<td>Column-15</td>
+</tr>
+<tr>
+<td>Column-16</td>
+<td>Column-17</td>
+<td>Column-18</td>
+</tr>
+<tr>
+<td>Column-19</td>
+<td>Column-20</td>
+<td>Column-21</td>
+</tr>
+<tr>
+<td>Column-22</td>
+<td>Column-23</td>
+<td>Column-24</td>
+</tr>
+<tr>
+<td>Column-25</td>
+<td>Column-26</td>
+<td>Column-27</td>
+</tr>
+</tbody>
+</table>
 
 Add styles for table as in here:-
 
 /* primary styles */
 
-html, body{
+html, body
+{
   margin:0;
   padding:0;
   height:100%;
@@ -69,6 +100,7 @@ html, body{
    display:none;
    position:absolute;
 }
+
 /* yours table styles */
 .tblList
 {
@@ -89,6 +121,7 @@ html, body{
     text-align: left;
     vertical-align: top;
 }
+
 .tblList tbody td {
     border-color: #cbc8c8 #cbc8c8 #e0e0e0 #cbc8c8;
     border-style: solid;
@@ -98,12 +131,15 @@ html, body{
     padding: 4px 10px 6px;
     vertical-align: top;
 }
+
 .tblList tr.alt td {
     background-color: #FFFFFF !important;
 }
+
 .tblList tbody tr:nth-child(2n+1) {
     background-color: #F7F7F7 !important;
 }
+
 .tblList tbody tr:nth-child(2n) {
     background-color: #FFFFFF !important;
 }
