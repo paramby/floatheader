@@ -3,10 +3,21 @@ As there are lots of plugins to fix/float the table header and they are also inc
 
 FloatHeader is a very light-weight jQuery plugin used to fix the table header. The logic is very simple so that you can tweak as per you requirement. Only a few lines of code, thats it; what else you need.
 
+<h2>Changelog:</h2>
+<h3>Version 1.0.1</h3>
+
+    Fixed Vertical Table Header
+
+<h3>Version 1.0.0</h3>
+
+    First Release - Fixed Horizontal Table Header
+
+
 Lets learn how to use it:-
 
 Very first we need a table markups as shown below:-
 
+<h3>Horizontal Headers</h3>
 <table class="tblList" width="100%" cellpadding="2" cellspacing="2">
 <thead>
 <tr>
@@ -69,43 +80,99 @@ Header#3
 </tr>
 </tbody>
 </table>
+<br>
+<h3>Vertical Headers</h3>
+<br>
+    <table id="vtable" class="tblList">
+      <tbody>
+        <tr>
+          <th>Header#1</th>
+          <td>Column-2</td>
+          <td>Column-3</td>
+          <td>Column-4</td>
+          <td>Column-5</td>
+          <td>Column-6</td>
+          <td>Column-7</td>
+          <td>Column-8</td>
+          <td>Column-9</td>
+        </tr>
+        <tr>
+          <th>Header#2</th>
+          <td>Column-11</td>
+          <td>Column-12</td>
+          <td>Column-13</td>
+          <td>Column-14</td>
+          <td>Column-15</td>
+          <td>Column-16</td>
+          <td>Column-17</td>
+          <td>Column-18</td>
+        </tr>
+        <tr>
+          <th>Header#3</th>
+          <td>Column-20</td>
+          <td>Column-21</td>
+          <td>Column-22</td>
+          <td>Column-23</td>
+          <td>Column-24</td>
+          <td>Column-25</td>
+          <td>Column-26</td>
+          <td>Column-27</td>
+        </tr>
+      </tbody>
+    </table>
 
 Add styles for table as in here:-
-
-/* primary styles */
-
-html, body
-{
+<pre>
+/*Primary Styles*/
+html, body{
   margin:0;
   padding:0;
   height:100%;
   color: #000000;
 }
 
-/* required styles for plugin */
-.maincontainer
+/*Plugins Styles*/
+
+.hmaincontainer
 {
-   width:100%;
-   overflow-x: hidden;
-   overflow-y: auto;
-   margin: 0 auto;
-   position:relative;
-   height:200px;
+   width:100%; 
+   overflow-x: hidden; 
+   overflow-y: auto; 
+   margin: 0 auto; 
+   position:relative; 
+   height:200px; 
 }
 
-.headerclone
+.hheaderclone
 {
     width:100%;
-   z-index: 9999;
-   display:none;
-   position:absolute;
+   z-index: 9999; 
+   display:none; 
+   position:absolute; 
 }
 
-/* yours table styles */
+.vmaincontainer
+{
+   width:30%; 
+   overflow-x: auto; 
+   overflow-y: hidden; 
+   margin: 0 auto; 
+   position:relative; 
+   height:100px; 
+}
+
+.vheaderclone
+{
+   z-index: 9999; 
+   display:none; 
+   position:absolute; 
+}
+
+/*Table Styles*/
 .tblList
 {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%; 
+    border-collapse: collapse; 
     border-style: None;
 }
 
@@ -121,7 +188,6 @@ html, body
     text-align: left;
     vertical-align: top;
 }
-
 .tblList tbody td {
     border-color: #cbc8c8 #cbc8c8 #e0e0e0 #cbc8c8;
     border-style: solid;
@@ -131,65 +197,24 @@ html, body
     padding: 4px 10px 6px;
     vertical-align: top;
 }
-
 .tblList tr.alt td {
     background-color: #FFFFFF !important;
 }
-
 .tblList tbody tr:nth-child(2n+1) {
     background-color: #F7F7F7 !important;
 }
-
 .tblList tbody tr:nth-child(2n) {
     background-color: #FFFFFF !important;
 }
+</pre>
 
 Add a reference of jQuery.js either using local path or using cdn.
 
+<script src="jquery.js"></script>
+
 Then Add floatheader.js plugin which is written as below:-
 
-    // FloatHeader v1.0 - jQuery floatheader plugin
-    // (c) 2015 Ram Yadav - criticaldevelopers.com
-    // License: http://www.opensource.org/licenses/mit-license.php
-
-    (function ($) {
-        $.fn.floatheader = function (options) {
-            // Default Settings
-            var settings = $.extend({
-
-            }, options);
-            // Apply Settings Variables
-            //
-            function fixheader(elem) {
-               // Add supportive wrappers to scrollable table
-               $(elem).wrap('<div class="maincontainer">');
-               $("div.maincontainer").prepend('<div class="headerclone"></div>');
-               $(elem).clone().appendTo(".headerclone")
-               $(".headerclone").find("table > tbody").remove();
-
-               // To get same width of header while cloning
-               $(elem).find("thead th").each(function(i){
-               $(".headerclone").find("table thead tr th").eq(i).css({"width":$(this).width()+"px"});           
-               });
-
-               // onscroll show/hide the cloned header
-               $("div.maincontainer").bind("scroll", function () {
-                   var offset = $(this).scrollTop();
-                   var headerheight = $(elem).find("thead th").eq(0).outerHeight();
-                   if (offset >= headerheight) {
-                       $(".headerclone").show();
-                       $(".headerclone").css({ "top": offset + "px" });
-                   }
-                   else {
-                       $(".headerclone").hide();
-                       $(".headerclone").css({ "top": offset + "px" });
-                   }
-               });
-            }
-            //
-            return fixheader(this);
-        };
-    } (jQuery));
+<script src="jquery.floatheader.js"></script>
 
 And Now its time to call the floatheader as here below:-
 
