@@ -123,98 +123,16 @@ Header#3
 
 Add styles for table as in here:-
 <pre>
-/*Primary Styles*/
-html, body{
-  margin:0;
-  padding:0;
-  height:100%;
-  color: #000000;
-}
-
-/*Plugins Styles*/
-
-.hmaincontainer
-{
-   width:100%; 
-   overflow-x: hidden; 
-   overflow-y: auto; 
-   margin: 0 auto; 
-   position:relative; 
-   height:200px; 
-}
-
-.hheaderclone
-{
-    width:100%;
-   z-index: 9999; 
-   display:none; 
-   position:absolute; 
-}
-
-.vmaincontainer
-{
-   width:30%; 
-   overflow-x: auto; 
-   overflow-y: hidden; 
-   margin: 0 auto; 
-   position:relative; 
-   height:100px; 
-}
-
-.vheaderclone
-{
-   z-index: 9999; 
-   display:none; 
-   position:absolute; 
-}
-
-/*Table Styles*/
-.tblList
-{
-    width: 100%; 
-    border-collapse: collapse; 
-    border-style: None;
-}
-
-.tblList thead th {
-    background-color: #f7f7f7 !important;
-    border-color: #cbc8c8 #cbc8c8 #e0e0e0 #cbc8c8;
-    border-style: solid;
-    border-width: 1px;
-    font-size: 15px;
-    font-weight: bold;
-    height: 25px;
-    padding: 4px 10px 3px;
-    text-align: left;
-    vertical-align: top;
-}
-.tblList tbody td {
-    border-color: #cbc8c8 #cbc8c8 #e0e0e0 #cbc8c8;
-    border-style: solid;
-    border-width: 1px;
-    font-size: 14px;
-    font-weight: normal;
-    padding: 4px 10px 6px;
-    vertical-align: top;
-}
-.tblList tr.alt td {
-    background-color: #FFFFFF !important;
-}
-.tblList tbody tr:nth-child(2n+1) {
-    background-color: #F7F7F7 !important;
-}
-.tblList tbody tr:nth-child(2n) {
-    background-color: #FFFFFF !important;
-}
+<link rel="stylesheet" href="floatheader.css" />
 </pre>
 
 Add a reference of jQuery.js either using local path or using cdn.
 
-<script src="jquery.js"></script>
+<pre><script src="jquery.js"></script></pre>
 
 Then Add floatheader.js plugin which is written as below:-
 
-<script src="jquery.floatheader.js"></script>
+<pre><script src="jquery.floatheader.js"></script></pre>
 
 And Now its time to call the floatheader as here below:-
 
