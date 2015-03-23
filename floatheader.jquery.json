@@ -34,6 +34,6 @@
 "docs": "http://criticaldevelopers.com/post/2015/03/20/simple-jquery-plugin-for-fixed-header-tables",
 "download": "https://github.com/paramby/floatheader.git",
 "dependencies": {
-"jquery": ">=1.5"
+"jquery": ">=1.3.2"
 }
 }
