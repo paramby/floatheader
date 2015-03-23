@@ -79,9 +79,7 @@ Header#3
 </tr>
 </tbody>
 </table>
-<br>
 <h3>Vertical Headers</h3>
-<br>
     <table id="vtable" class="tblList">
       <tbody>
         <tr>
@@ -120,18 +118,11 @@ Header#3
       </tbody>
     </table>
 
-Add styles for table as in here:-
-<pre>
-<link rel="stylesheet" href="floatheader.css" />
-</pre>
+Add styles floatheader.css
 
 Add a reference of jQuery.js either using local path or using cdn.
 
-<pre><script src="jquery.js"></script></pre>
-
-Then Add floatheader.js plugin which is written as below:-
-
-<pre><script src="jquery.floatheader.js"></script></pre>
+Then Add floatheader.js plugin.
 
 And Now its time to call the floatheader as here below:-
 
