@@ -12,7 +12,6 @@ FloatHeader is a very light-weight jQuery plugin used to fix the table header. T
 
     First Release - Fixed Horizontal Table Header
 
-
 Lets learn how to use it:-
 
 Very first we need a table markups as shown below:-
